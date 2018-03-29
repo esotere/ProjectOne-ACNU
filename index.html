@@ -11,12 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Include Required Prerequisites -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 
     <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 </head>
 
@@ -34,20 +34,20 @@
                 <div class="form-group">
             
                     <label for="start-date">Start Date</label>
-                    <input type="date" name="start-date" value="" />
+                    <input type="date" id="start-date" value="" />
                 </div>
                 <div class="form-group">
                     <label for="end-date">End Date</label>
-                    <input type="date" name="end-date" value="" />
+                    <input type="date" id="end-date" value="" />
                 </div>
                 <!-- use oninput for the sliders to update the value, then check that min <= max -->
                 <div class="form-group">
                     <label for="list-budget-min">Budget min: <span id="budget-min-disp" ></span></label>
-                    <input type="range" name="list-budget-min" value="" min="0" max="2000"/>
+                    <input type="range" id="list-budget-min" value="0" min="0" max="2000"/>
                 </div>
                 <div class="form-group">
                     <label for="list-budget-max">Budget max: <span id="budget-max-disp" ></span></label>
-                    <input type="range" name="list-budget-max" value="" min="0" max="2000"/>
+                    <input type="range" id="list-budget-max" value="2000" min="0" max="2000"/>
                 </div>
             </form>
             
@@ -86,7 +86,7 @@
 
         </div>
     </div>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 
