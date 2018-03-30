@@ -1,132 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>SpontaTravel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>SpontaTravel</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Include Required Prerequisites -->
-    <script src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<!-- Include Required Prerequisites -->
+<script src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 
-    <!-- Include Date Range Picker -->
-    <script src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<!-- Include Date Range Picker -->
+<script
+	src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">SpontaTravel</h1>
-                <p class="lead">Plan a spontaneous trip from DC based on budget, date range and return travel and lodging options.</p>
-            </div>
-        </div>
-        <div class="main-container">
-            <form id="travel">
-                <div class="form-group">
-            
-                    <label for="start-date">Start Date</label>
-                    <input type="date" id="start-date" value="" />
-                </div>
-                <div class="form-group">
-                    <label for="end-date">End Date</label>
-                    <input type="date" id="end-date" value="" />
-                </div>
-                <!-- use oninput for the sliders to update the value, then check that min <= max -->
-                <div class="form-group">
-                    <label for="list-budget-min">Budget min: <span id="budget-min-disp" ></span></label>
-                    <input type="range" id="list-budget-min" value="0" min="0" max="2000"/>
-                </div>
-                <div class="form-group">
-                    <label for="list-budget-max">Budget max: <span id="budget-max-disp" ></span></label>
-                    <input type="range" id="list-budget-max" value="2000" min="0" max="2000"/>
-                </div>
-            </form>
-     <div class="results">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>A</th>
-                        <th>B</th>
-                        <th>C</th>
-                        <th>D</th>
-                    </tr>
-                </thead>
-                <tbody id="results-tbody">
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-4">SpontaTravel</h1>
+				<p class="lead">Plan a spontaneous trip from DC based on budget,
+					date range and return travel and lodging options.</p>
+			</div>
+		</div>
+		<div class="main-container">
+			<form id="travel">
+				<div class="form-group">
 
- 
-        <!--Footer-->
-        <footer class="page-footer font-small blue pt-4 mt-4">
+					<label for="start-date">Start Date</label> <input type="date"
+						id="start-date" value="" />
+				</div>
+				<div class="form-group">
+					<label for="end-date">End Date</label> <input type="date"
+						id="end-date" value="" />
+				</div>
+				<!-- use oninput for the sliders to update the value, then check that min <= max -->
+				<div class="form-group">
+					<label for="list-budget-min">Budget min: <span
+						id="budget-min-disp"></span></label> <input type="range"
+						id="list-budget-min" value="0" min="0" max="2000" />
+				</div>
+				<div class="form-group">
+					<label for="list-budget-max">Budget max: <span
+						id="budget-max-disp"></span></label> <input type="range"
+						id="list-budget-max" value="2000" min="0" max="2000" />
+				</div>
+				<!-- GO! Button -->
+				<div class="form-group">
+					<button id="button" class="btn btn-success" id="add-topic"
+							type="submit">GO!</button>
+					<!-- <input id="select-topic" type="submit" value="GO!"> -->
+				</div>
+			</form>
+			<div class="results">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>A</th>
+							<th>B</th>
+							<th>C</th>
+							<th>D</th>
+						</tr>
+					</thead>
+					<tbody id="results-tbody">
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-            <!--Footer Links-->
-            <div class="container-fluid text-center text-md-left">
-                <div class="row">
 
-                    <hr>
-                    <!--First column-->
-                    <div class="col-md-6">
-                        <h5 class="text">Powered by ACNU</h5>
-                        <p>This application is built by adrenaline junkies for adrenaline junkies.</p>
-                    </div>
-                    <!--/.First column-->
+			<!--Footer-->
+			<footer class="page-footer font-small blue pt-4 mt-4">
 
-                    <!--Second column-->
-                    <div class="col-md-6">
-                        <h5 class="text-uppercase">About The Team</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#!">Atta Nasib</a>
-                            </li>
-                            <li>
-                                <a href="#!">Chris Lin</a>
-                            </li>
-                            <li>
-                                <a href="#!">Nate Schubert</a>
-                            </li>
-                            <li>
-                                <a href="#!">Uche Okonkwo</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/.Second column-->
-                </div>
-            </div>
-            <!--/.Footer Links-->
-            <hr>
-            <!--Copyright-->
-            <div class="footer-copyright py-3 text-center">
-                © 2018 Copyright: ACNU
-            </div>
-            <!--/.Copyright-->
+				<!--Footer Links-->
+				<div class="container-fluid text-center text-md-left">
+					<div class="row">
 
-        </footer>
-        <!--/.Footer-->
+						<hr>
+						<!--First column-->
+						<div class="col-md-6">
+							<h5 class="text">Powered by ACNU</h5>
+							<p>This application is built by adrenaline junkies for
+								adrenaline junkies.</p>
+						</div>
+						<!--/.First column-->
 
-    </div>
-    <script src="assets/javascript/app.js"></script>
+						<!--Second column-->
+						<div class="col-md-6">
+							<h5 class="text-uppercase">About The Team</h5>
+							<ul class="list-unstyled">
+								<li><a href="#!">Atta Nasib</a></li>
+								<li><a href="#!">Chris Lin</a></li>
+								<li><a href="#!">Nate Schubert</a></li>
+								<li><a href="#!">Uche Okonkwo</a></li>
+							</ul>
+						</div>
+						<!--/.Second column-->
+					</div>
+				</div>
+				<!--/.Footer Links-->
+				<hr>
+				<!--Copyright-->
+				<div class="footer-copyright py-3 text-center">© 2018
+					Copyright: ACNU</div>
+				<!--/.Copyright-->
+
+			</footer>
+			<!--/.Footer-->
+
+		</div>
+	</div>
+
+	<script src="./javascript/app.js"></script>
 
 </body>
 
