@@ -32,12 +32,12 @@ User inputs an activity (from list), use API 1 to get locations, use API 2 (Goog
 
 ## HTML
 
-Input fields needed
+Input fields needed (Atta)
 
 * Activity (selection menu)
 * Start location (geolocation or user input (ZIP code, address, other text))
 * range (miles, number)
 
-Page output
+Page output (Atta)
 
 * tables, lists, embedded map?
