@@ -67,28 +67,4 @@ $(function() {
          $("#topTrow").append(budget);
                  //console.log($(this));
          };
-
-         $("#btn-find-loc").on("click", function() {
-            // Storing our API URL for a random cat image
-           // var queryURL = ""
-      
-        //     // Perfoming an AJAX GET request to our queryURL
-        //     $.ajax({
-        //       url: queryURL,
-        //       method: "GET"
-        //    // success: function(data) {
-        //    //		  $("#results-tbody").empty();
-        //         //	  $("#results-tbody").append(); 
-        //         //	  console.log();
-        //         //  	}, //put else statement and use success above ==> OR use response below
-        //     }).then(function(response) {
-        //         console.log(response);
-        //       // Saving the property
-        //       var infoUrl = response.data. ;            
-        //     });
-        // function searchActivity() {
-        // 	var q = fields.indexOf();
-        // 	var queryURL = "";  
-         });         
-
 });
