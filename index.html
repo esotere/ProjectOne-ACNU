@@ -11,14 +11,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Include Required Prerequisites -->
-    <script src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 
-    <!-- Include Date Range Picker -->
-    <script src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 </head>
 
 <body>
@@ -31,49 +24,28 @@
             </div>
         </div>
         <div class="main-container">
-            <form id="travel">
-                <div class="form-group">
 
-                    <label for="start-date">Start Date</label>
-                    <input type="date" id="start-date" value="" />
-                </div>
-                <div class="form-group">
-                    <label for="end-date">End Date</label>
-                    <input type="date" id="end-date" value="" />
-                </div>
-                <!-- use oninput for the sliders to update the value, then check that min <= max -->
-                <div class="form-group">
-                    <label for="list-budget-min">Budget min:
-                        <span id="budget-min-disp"></span>
-                    </label>
-                    <input type="range" id="list-budget-min" value="0" min="0" max="2000" />
-                </div>
-                <div class="form-group">
-                    <label for="list-budget-max">Budget max:
-                        <span id="budget-max-disp"></span>
-                    </label>
-                    <input type="range" id="list-budget-max" value="2000" min="0" max="2000" />
-                </div>
-            </form>
-
-            <form action="/search" id="find_activity" class="business-search-form">
+            <form id="find_activity" class="business-search-form">
                 <div class="row">
                     <div class="form-group col-xs-6">
-                        <select class="form-control">
-                            <option text="cocktail">Cocktails</option>
-                            <option text="movie">Movie</option>
-                            <option text="art-museums">Art/Museums</option>
-                            <option text="bowling">Bowling</option>
-                            <option text="running">Running</option>
-                            <option text="cycling">Cycling</option>
-                            <option text="shooting">Shooting</option>
+                        <label for="sel-activity">Activity of interest</label>
+                        <select name="sel-activity" id="sel-activity" class="form-control">
+                            <option value="cocktail">Cocktails</option>
+                            <option value="movie">Movie</option>
+                            <option value="art-museums">Art/Museums</option>
+                            <option value="bowling">Bowling</option>
+                            <option value="running">Running</option>
+                            <option value="cycling">Cycling</option>
+                            <option value="shooting">Shooting</option>
                         </select>
                     </div>
                     <div class="form-group col-xs-6 ">
-                        <select class="form-control" placeholder="address, neighborhood, city, state, or zip">
+                        <label for="sel-location">Location selection</label>
+                        <select name="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
                             <option text="current-location">Current Location</option>
                             <option text="add-new-location">Add a new location</option>
                         </select>
+                        <button class="btn btn-block" id="btn-find-loc">Get current location</button>
                     </div>
 
                 </div>
@@ -128,16 +100,16 @@
                             <h5 class="text-uppercase ">About The Team</h5>
                             <ul class="list-unstyled ">
                                 <li>
-                                    <a href="#! ">Atta Nasib</a>
+                                    <a href="https://github.com/anasib">Atta Nasib</a>
                                 </li>
                                 <li>
-                                    <a href="#! ">Chris Lin</a>
+                                    <a href="https://github.com/cslin82">Chris Lin</a>
                                 </li>
                                 <li>
-                                    <a href="#! ">Nate Schubert</a>
+                                    <a href="https://github.com/NiceGuyN8">Nate Schubert</a>
                                 </li>
                                 <li>
-                                    <a href="#! ">Uche Okonkwo</a>
+                                    <a href="https://github.com/esotere">Uche Okonkwo</a>
                                 </li>
                             </ul>
                         </div>
