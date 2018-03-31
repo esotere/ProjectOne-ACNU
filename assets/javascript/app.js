@@ -70,23 +70,12 @@ $(function() {
     //       method: "GET"
     //    // success: function(data) {
     //    //		  $("#topic-div").empty();
-    //         //	  $("#topic-div").append("<img src='" + data.data[0].images.original_still.url + "'>"); 
-    //         //	  console.log(data.data[0].images.original_still.url);
+    //         //	  $("#topic-div").append(""); 
+    //         //	  console.log();
     //         //  	},
     //     }).then(function(response) {
     //         console.log(response);
-    //       // Saving the image_original_url property
-    //       var infoUrl = response.data.image_original_url;
-  
-    //       // Creating and storing an image tag
-    //       var infoImage = $("<img>");
-  
-    //       // Setting the image src attribute to imageUrl
-    //       infoImage.attr("src", imageUrl);
-    //       infoImage.attr("alt", "location image");
-  
-    //       // Prepending the image to the images div
-    //       $("#images").prepend(infoImage);
+    //       
     //     });
     // function searchActivity() {
 	// 	var q = topics.indexOf(topics);
