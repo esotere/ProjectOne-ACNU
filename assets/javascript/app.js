@@ -62,12 +62,14 @@ var clientSecret = "AMKSPGXNJR1B0L0HGP2YGVABBJF2J1LVOOKXM05DEADKTNPQ";
                     venueList.forEach(element => {
                     console.log(element.venue.name);
                 
-                var resultName = $("<tr>").attr("href", element.venue.url).text(element.venue.name);
+                var resultName = $("<tr>").attr("href", element.venue.url).text(element.venue.name + " " + element.venue.location.address);
                 var resultAddress = $("<tr>").attr("href", element.venue.url).text(element.venue.location.address);
+
+                //var resultAddress = $("<tr>").attr("href", element.venue.url).text(element.venue.location.address);
                // var resultElement = $("<tb>").text(element);
                   
                     results.append(resultName);
-                    results.append(resultAddress);
+                    //results.append(resultAddress);
                    // results.append(resultElement);
                     //$("#topTrow").append(resultElement);
                 });
