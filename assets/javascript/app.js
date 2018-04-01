@@ -22,28 +22,58 @@ $(function() {
             console.log('no geolocation');
             /* geolocation IS NOT available */
         }
-     // Storing our API URL for a random cat image
-           // var queryURL = ""
-      
-        //     // Perfoming an AJAX GET request to our queryURL
-        //     $.ajax({
-        //       url: queryURL,
-        //       method: "GET"
-        //    // success: function(data) {
-        //    //		  $("#results-tbody").empty();
-        //         //	  $("#results-tbody").append(); 
-        //         //	  console.log();
-        //         //  	}, //put else statement and use success above ==> OR use response below
-        //     }).then(function(response) {
-        //         console.log(response);
-        //       // Saving the property
-        //       var infoUrl = response.data. ;            
-        //     });
-        // function searchActivity() {
-        // 	var q = fields.indexOf();
-        // 	var queryURL = ""; 
 
-    });   
+var baseURL = "https://api.foursquare.com/v2/venues/explore"; // ensure https
+// var apiKey = ""; // API key
+
+
+var clientID = "LD0S2FQ4K3VGFVCUAYSLASC31Y2P5OABRXJHV024FK0N3V2Z";
+var clientSecret = "AMKSPGXNJR1B0L0HGP2YGVABBJF2J1LVOOKXM05DEADKTNPQ";
+
+        $('#results-tbody').empty();
+
+        // can condense this later
+        var params = {
+            client_id: clientID,
+            client_secret: clientSecret,
+            // other api params go here
+            near: 20006,
+            query: $('#sel-activity').val().trim(),
+           // limit: $('#input-limit').val().trim(),
+            v: "20180330"
+
+        };
+        var queryURL = baseURL + '?' + jQuery.param(params);
+
+        console.log(queryURL);
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            // After the data from the AJAX request comes back
+            .then(function (response) {
+                
+                var results = $('#results-tbody')
+                
+                results.empty();
+                
+                var venueList = response.response.groups[0].items;
+                    venueList.forEach(element => {
+                    console.log(element.venue.name);
+                
+                var resultName = $("<tr>").attr("href", element.venue.url).text(element.venue.name);
+                var resultAddress = $("<tr>").attr("href", element.venue.url).text(element.venue.location.address);
+               // var resultElement = $("<tb>").text(element);
+                  
+                    results.append(resultName);
+                    results.append(resultAddress);
+                   // results.append(resultElement);
+                    //$("#topTrow").append(resultElement);
+                });
+                             
+            });
+    });     
 
     var fields = [
        ["Name"],
@@ -68,3 +98,4 @@ $(function() {
                  //console.log($(this));
          };
 });
+
