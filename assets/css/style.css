@@ -7,6 +7,8 @@ body {
     float: left;
     align-content: center;
     width: 25%;
+    display: block;
+    /* overflow: auto; */
     overflow: hidden;
 
 }
@@ -22,6 +24,15 @@ body {
 
 }
 
-tr {
+.topTrow3 {
+    /* float: left; */
+    align-content: center;
     width: 25%;
+    display: block;
+    /* position: fixed; */
+    /* overflow: auto; */
+    overflow: hidden;
+
 }
+
+
