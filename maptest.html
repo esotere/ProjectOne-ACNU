@@ -33,42 +33,25 @@
     </style>
   </head>
   <body>
-    <div id="floating-panel">
-    <b>Start: </b>
-    <select id="start">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
-    <b>End: </b>
-    <select id="end">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-      <option value="washington, dc">Washington DC</option>
-      <option value="1101 11th street nw washington, dc">Bootcamp</option>
-    </select>
-    </div>
+
     <div id="map"></div>
+
+    <input type="text" name="input-1" id="input-1" value="The White House">
+    <input type="text" name="input-2" id="input-2" value="1101 k st nw washington dc">
+
+
     <script>
+
+      var userOrigin = '';
+      var userDestination = '';
+
+      // $(document).on('click', function () {
+      //   $('input-1').push(userOrigin);
+        // $('input-2').push(userDestination);
+      // })
+
+
+
       function initMap() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -79,14 +62,24 @@
         directionsDisplay.setMap(map);
 
 
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        $(document).on('click', function () {
+          // $('input-1').push(userOrigin);
+          // $('input-2').push(userDestination);
+           userDestination = $('#input-1').val();
+           console.log(userDestination);
 
+           userOrigin = $('#input-2').val();
+           console.log(userOrigin);
+          // $('#user-topic').val();
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        })
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
-          origin: '1101 k street nw washington dc',
-          destination: 'the white house',
+          origin: userOrigin,
+          destination: userDestination,
           travelMode: 'DRIVING'
         }, function(response, status) {
           if (status === 'OK') {
@@ -97,6 +90,7 @@
         });
       }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3w9DmjOslsLQeEU-pzJP5wpU9_7eOIUU&callback=initMap">
     </script>
