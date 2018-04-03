@@ -5,6 +5,10 @@ var baseURL = "https://api.foursquare.com/v2/venues/explore"; // ensure https
 var clientID = "LD0S2FQ4K3VGFVCUAYSLASC31Y2P5OABRXJHV024FK0N3V2Z";
 var clientSecret = "AMKSPGXNJR1B0L0HGP2YGVABBJF2J1LVOOKXM05DEADKTNPQ";
 
+var lat;
+var long;
+
+var foursquareResponse;
 
 // jQuery wrapper
 
@@ -36,6 +40,7 @@ $(document).ready(function () {
         })
             // After the data from the AJAX request comes back
             .then(function (response) {
+                foursquareResponse = response;
                 var newUL = $('<ul>');
                 var newLI;
 
@@ -57,5 +62,20 @@ $(document).ready(function () {
             });
     });
 
+    $('#button2').on('click', function () {
+        console.log('button2 pressed');
+        if ("geolocation" in navigator) {
+            /* geolocation is available */
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
+                var lat = position.coords.latitude;
+                var long =  position.coords.longitude;
+                $('#input-near').val(lat+','+long);
 
+            });
+        } else {
+            console.log('no geolocation');
+            /* geolocation IS NOT available */
+        }
+    });
 });
