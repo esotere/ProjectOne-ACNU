@@ -36,7 +36,7 @@
 
     <div id="map"></div>
     <!--ADDING DIRECTIONS PANEL  -->
-    <div id="right-panel"></div>
+    <div id="directions"></div>
 
     <input type="text" name="input-1" id="input-1" value="The White House">
     <input type="text" name="input-2" id="input-2" value="1101 k st nw washington dc">
@@ -62,7 +62,7 @@
           center: {lat: 38.90, lng: -77.03}
         });
         directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('right-panel'));
+        directionsDisplay.setPanel(document.getElementById('directions'));
 
 
         $(document).on('click', function () {
