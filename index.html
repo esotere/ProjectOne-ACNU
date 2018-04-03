@@ -19,7 +19,7 @@
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">SpontaTravel</h1>
+                <h1 class="display-4">Impulse</h1>
                 <p class="lead">Plan a spontaneous trip from DC based on budget, date range and return travel and lodging options.</p>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group col-xs-6 ">
                         <label for="sel-location">Location selection</label>
-                        <select name="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
+                        <select name="sel-location" id="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
                             <option text="current-location">Current Location</option>
                             <option text="add-new-location">Add a new location</option>
                         </select>
@@ -52,33 +52,29 @@
 
             </form>
 
-            <div class="results ">
-                <table class="table table-striped table-bordered ">
-                    <thead id="fields">
-                        <tr id="topTrow">
-                            <th>A</th>
-                            <th>B</th>
-                            <th>C</th>
-                            <th>D</th>
-                        </tr>
-                    </thead>
-                    <tbody id="results-tbody ">
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row" id="outputTop">
+
+                <!-- Column names go here -->
+
             </div>
 
+            <div class="row" id="output">
+
+                <!-- foursquare info goes here -->
+
+            </div>
+
+            <div class="col-lg-6" id="map">
+
+                <!-- map goes here -->
+
+            </div>
+            <div class="col-lg-6" id="direction">
+
+                <!-- direction goes here -->
+
+            </div>
+            <!-- </div> -->
 
             <!--Footer-->
             <footer class="page-footer font-small blue pt-4 mt-4 ">
@@ -128,7 +124,9 @@
             <!--/.Footer-->
 
         </div>
-        <script src="assets/javascript/app.js"></script>
+        <script src="./assets/javascript/app.js"></script>
+        <!-- <script rel="script" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    </div>
 
 </body>
 
