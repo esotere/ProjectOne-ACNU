@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    
+    
+    <div class="container">
+        <button class="btn" id="button1">run foursquare query</button>
+        <button class="btn" id="button2">get location</button>
+        <label for="input-query">Query string</label>
+        <input type="text" id="input-query">
+        <label for="input-near">Near?</label>
+        <input type="text" id="input-near" value="1101 K St NW Washington, DC 20005-4009">
+        <label for="input-limit">Result limit</label>
+        <input type="number" id="input-limit" value="15">
+        <div id="output">
+            <!-- output go here -->
+        </div>
+
+
+    
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="foursquare.js"></script>
+</body>
+</html>

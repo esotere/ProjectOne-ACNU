@@ -2,3 +2,37 @@ body {
     box-sizing: border-box;
     border-color: black;
 }
+
+.topTrow {
+    float: left;
+    align-content: center;
+    width: 25%;
+    display: block;
+    /* overflow: auto; */
+    overflow: hidden;
+
+}
+
+.topTrow2 {
+    float: left;
+    align-content: center;
+    width: 25%;
+    overflow: hidden;
+    font-size: 1.5em;
+    font-weight: bold
+
+
+}
+
+.topTrow3 {
+    /* float: left; */
+    align-content: center;
+    width: 25%;
+    display: block;
+    /* position: fixed; */
+    /* overflow: auto; */
+    overflow: hidden;
+
+}
+
+
