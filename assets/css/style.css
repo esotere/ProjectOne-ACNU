@@ -2,3 +2,26 @@ body {
     box-sizing: border-box;
     border-color: black;
 }
+
+.topTrow {
+    float: left;
+    align-content: center;
+    width: 25%;
+    overflow: hidden;
+
+}
+
+.topTrow2 {
+    float: left;
+    align-content: center;
+    width: 25%;
+    overflow: hidden;
+    font-size: 1.5em;
+    font-weight: bold
+
+
+}
+
+tr {
+    width: 25%;
+}
