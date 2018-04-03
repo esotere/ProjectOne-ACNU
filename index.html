@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group col-xs-6 ">
                         <label for="sel-location">Location selection</label>
-                        <select name="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
+                        <select name="sel-location" id="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
                             <option text="current-location">Current Location</option>
                             <option text="add-new-location">Add a new location</option>
                         </select>
@@ -55,15 +55,15 @@
             <div class="results ">
                 <table class="table table-striped table-bordered ">
                     <thead>
-                        <tr>
+                        <tr id="topTrow">
                             <th>A</th>
                             <th>B</th>
                             <th>C</th>
                             <th>D</th>
                         </tr>
                     </thead>
-                    <tbody id="results-tbody ">
-                        <tr>
+                    <tbody id="results-tbody">
+                        <tr  >
                             <td>1</td>
                             <td>2</td>
                             <td>3</td>
@@ -78,6 +78,16 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="row" id="outputTop">
+                    <div class="col-lg-3" >
+                        </div>
+                        </div>
+            
+            <div class="row" id="output">
+                <div class="col-lg-3" >
+                    </div>
+                    </div>
 
 
             <!--Footer-->
@@ -128,7 +138,10 @@
             <!--/.Footer-->
 
         </div>
-        <script src="assets/javascript/app.js "></script>
+        <script src="./assets/javascript/app.js"></script>
+
+        <!-- <script rel="script" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
 
 </body>
 
