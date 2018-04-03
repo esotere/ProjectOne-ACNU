@@ -54,27 +54,30 @@ var clientSecret = "AMKSPGXNJR1B0L0HGP2YGVABBJF2J1LVOOKXM05DEADKTNPQ";
         })
             // After the data from the AJAX request comes back
             .then(function (response) {
+                console.log(response);
                 
                 var results = $('#results-tbody');
-                var businessName = $("#output");
-                
+                var businessName = $("#output");                
                 results.empty();
                 businessName.empty();
+
                 var venueList = response.response.groups[0].items;
                     venueList.forEach(element => {
+                       // element === undefined || null ? element = "Unknown": element = element;
+                       
                     //console.log(element);
-                    console.log(element.venue.name);
-                    console.log(element.venue.location);
-                    console.log(element.venue.location.address);
-                    console.log(element.venue.categories);
-                    console.log(element.venue.price);
-                    console.log(element.venue.hours.status);
+                    // console.log(element.venue.name);
+                    // console.log(element.venue.location);
+                    // console.log(element.venue.location.address);
+                    // console.log(element.venue.categories);
+                    // console.log(element.venue.price.currency);
+                    // console.log(element.venue.hours);
                 
-                var resultName = $("<td>").attr("href", element.venue.url).text(element.venue.name);
-                var resultAddress = $("<td>").attr("href", element.venue.url).text(element.venue.location.address);
+                var resultName = $("<tr>").attr("href", element.venue.url).text(element.venue.name);
+                var resultAddress = $("<tr>").attr("href", element.venue.url).text(element.venue.location.address);
                 var businessNameOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.name);
                 var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
-                var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price);
+                var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
                 var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
                 //var resultAddress = $("<tb>").attr("href", element.venue.url).text(element.venue.location.address);
@@ -83,11 +86,15 @@ var clientSecret = "AMKSPGXNJR1B0L0HGP2YGVABBJF2J1LVOOKXM05DEADKTNPQ";
                     results.append(resultName);                    
                     results.append(resultAddress);
                    // results.append(resultElement);
-                    businessName.append(businessNameOut);
-                    businessName.append(businessHoursOut);
-                    businessName.append(businessAddressOut);
+                    businessName.append(businessNameOut);                   
+                    businessName.append(businessHoursOut);                    
+                    businessName.append(businessAddressOut);                   
                     businessName.append(budgetOut);
-                   
+                    
+                     console.log(businessNameOut)
+                     console.log(businessHoursOut)
+                     console.log(businessAddressOut)
+                     console.log(budgetOut)
                     //$("#topTrow").append(resultElement);
 
         //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
