@@ -12,10 +12,14 @@
     
     
     <div class="container">
-        <button class="btn" id="button1">button1</button>
+        <button class="btn" id="button1">run foursquare query</button>
+        <button class="btn" id="button2">get location</button>
+        <label for="input-query">Query string</label>
         <input type="text" id="input-query">
-        <input type="text" id="input-near">
-        <input type="number" id="input-limit">
+        <label for="input-near">Near?</label>
+        <input type="text" id="input-near" value="1101 K St NW Washington, DC 20005-4009">
+        <label for="input-limit">Result limit</label>
+        <input type="number" id="input-limit" value="15">
         <div id="output">
             <!-- output go here -->
         </div>
