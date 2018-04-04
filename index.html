@@ -64,11 +64,27 @@
 
             </div>
 
+            <!--ADDING MODE OF TRAVEL OPTIONS  -->
+            <div id="floating-panel">
+            <b>Mode of Travel: </b>
+            <select id="mode">
+              <option value="DRIVING">Driving</option>
+              <option value="WALKING">Walking</option>
+              <option value="BICYCLING">Bicycling</option>
+              <option value="TRANSIT">Transit</option>
+            </select>
+            </div>
+
             <div class="col-lg-6" id="map">
 
                 <!-- map goes here -->
 
             </div>
+
+            <!--PLACE HOLDER ADDRESS INPUTS  -->
+            <input type="text" name="input-1" id="input-1" value="The White House">
+            <input type="text" name="input-2" id="input-2" value="1101 k st nw washington dc">
+
             <div class="col-lg-6" id="direction">
 
                 <!-- direction goes here -->
@@ -125,6 +141,64 @@
 
         </div>
         <script src="./assets/javascript/app.js"></script>
+        <!--GOOGLE MAP SCRIPT  -->
+        <script>
+
+        // DECLARING VARIABLES FOR ORIDING AND DESTINATION
+          var userOrigin = '';
+          var userDestination = '';
+
+        // THIS FUNTION GENERATES THE MAP
+          function initMap() {
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer;
+            // APPENDS MAP TO DIV
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 9,
+              center: {lat: 38.90, lng: -77.03}
+            });
+            directionsDisplay.setMap(map);
+            // APPENDS DIRECTIONS TO DIV
+            directionsDisplay.setPanel(document.getElementById('direction'));
+
+            // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
+            $(document).on('click', function () {
+
+               userDestination = $('#input-1').val();
+               console.log(userDestination);
+
+               userOrigin = $('#input-2').val();
+               console.log(userOrigin);
+
+            // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+            //
+            document.getElementById('mode').addEventListener('change', function() {
+              calculateAndDisplayRoute(directionsService, directionsDisplay);
+            });
+            })
+          }
+
+          // FUNCTRION THAT CREATES DIRECTIONS
+          function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+            var selectedMode = document.getElementById('mode').value;
+            directionsService.route({
+              origin: userOrigin,
+              destination: userDestination,
+              travelMode: google.maps.TravelMode[selectedMode]
+            }, function(response, status) {
+              if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+              } else {
+                window.alert('Directions request failed due to ' + status);
+              }
+            });
+          }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3w9DmjOslsLQeEU-pzJP5wpU9_7eOIUU&callback=initMap">
+        </script>
         <!-- <script rel="script" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     </div>
 

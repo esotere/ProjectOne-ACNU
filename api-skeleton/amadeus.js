@@ -16,13 +16,14 @@ $(document).ready(function () {
         var params = {
             apikey: apiKey,
             origin: "DCA",
-            destination: "JFK", 
+            destination: "JFK",
             departure_date: "2018-06-25",
             return_date: "2018-07-04",
-            adults: "1"
+            adults: "1",
+            number_of_results: "1"
 
             // other api params go here
-       
+
         };
         var queryURL = baseURL + '?' + jQuery.param(params);
 
@@ -36,7 +37,7 @@ $(document).ready(function () {
             .then(function (response) {
                 console.log(response);
                 $('#output').append(JSON.stringify(response));
-                
+
             });
     });
 

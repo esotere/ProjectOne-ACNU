@@ -68,11 +68,11 @@ $(function () {
                     // var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
-                    
+
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow")
                         .append( $("<a>").attr("href", element.venue.url).text(element.venue.name) );
-                    
-                    
+
+
                     var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
                     var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.hours.status);
@@ -123,4 +123,3 @@ $(function () {
         //console.log($(this));
     };
 });
-
