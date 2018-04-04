@@ -22,10 +22,10 @@
         // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
         $(document).on('click', function () {
 
-           userDestination = $('#input-1').val() || geoloc();
+           userDestination = $('#input-1').val();
            console.log(userDestination);
 
-           userOrigin = $('#input-2').val();
+           userOrigin = $('#input-2').val() || geoloc();
            console.log(userOrigin);
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
@@ -53,12 +53,6 @@
         });
       }
     
-
-
-
-
-
-
 
 
 
