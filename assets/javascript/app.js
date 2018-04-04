@@ -100,7 +100,14 @@ $(function () {
                     } else {
                         var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
                     }
-                    var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.hours.status);
+                    var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow")
+                    if ("hours" in element.venue) {
+                        businessHoursOut.text(element.venue.hours.status);
+                    } else {
+                        businessHoursOut.text('n/a');
+                        
+                    }
+                    
 
 
                     businessName.append(businessNameOut);
