@@ -26,7 +26,13 @@ function initMap() {
         userDestination = $('#input-1').val();
         console.log(userDestination);
 
-        userOrigin = $('#input-2').val() || geoloc();
+        // userOrigin = $('#input-2').val() || geoloc();
+        if (useCurrentLocation) {
+            userOrigin = llString;
+        } else {
+            userOrigin = $('#sel-location').val();
+        }
+
         console.log(userOrigin);
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
