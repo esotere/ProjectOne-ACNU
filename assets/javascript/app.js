@@ -7,9 +7,9 @@ $(function () {
 
 
 
-//     $('#btn-find-loc').on('click', function (event) {
-//         event.preventDefault();
-//         console.log('btn-find-loc pressed');
+    $('#btn-find-loc').on('click', function (event) {
+        event.preventDefault();
+        console.log('btn-find-loc pressed');
 
         // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
         if ("geolocation" in navigator) {
@@ -91,7 +91,7 @@ $(function () {
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
 
                 });
-
+            });
         
     });
 
@@ -111,10 +111,10 @@ $(function () {
         var location = $("<th>").text(fields[2]);
         var budget = $("<th>").text(fields[3]);
         // Constructing HTML containing the topics information
-        var nameBusiness2 = $("<div col-lg-3 class='topTrow2'>").text(fields[0]);
-        var hours2 = $("<div col-lg-3 class='topTrow2'>").text(fields[1]);
-        var location2 = $("<div col-lg-3 class='topTrow2'>").text(fields[2]);
-        var budget2 = $("<div col-lg-3 class='topTrow2'>").text(fields[3]);
+        var nameBusiness2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[0]);
+        var hours2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[1]);
+        var location2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[2]);
+        var budget2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[3]);
 
         $("#outputTop").append(nameBusiness2);
         $("#outputTop").append(hours2);
