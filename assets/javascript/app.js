@@ -98,9 +98,15 @@ $(function () {
         //     /* geolocation IS NOT available */
         // }
 
+    });
+
+
+    $('#btn-run-search').on('click', function (event) {
+        event.preventDefault();
+        console.log('btn-run-search pressed');
+
         var baseURL = "https://api.foursquare.com/v2/venues/explore"; // ensure https
         // var apiKey = ""; // API key
-
 
         var clientID = "LD0S2FQ4K3VGFVCUAYSLASC31Y2P5OABRXJHV024FK0N3V2Z";
         var clientSecret = "AMKSPGXNJR1B0L0HGP2YGVABBJF2J1LVOOKXM05DEADKTNPQ";
@@ -112,12 +118,20 @@ $(function () {
             client_id: clientID,
             client_secret: clientSecret,
             // other api params go here
-            near: 20006,
+            // near: 20006,
             query: $('#sel-activity').val().trim(),
             // limit: $('#input-limit').val().trim(),
             v: "20180330"
 
         };
+        if (useCurrentLocation) {
+            params.near = llString;
+        } else {
+            params.near = $('#sel-location').val();
+        }
+         
+
+        
         var queryURL = baseURL + '?' + jQuery.param(params);
 
         console.log(queryURL);
@@ -143,12 +157,19 @@ $(function () {
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
-                    var businessNameOut = $("<div>").addClass("col-lg-3 topTrow")
-                        .append( $("<a>").attr("href", element.venue.url).text(element.venue.name) );
-
+                    var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
+                    if ("url" in element.venue) {
+                        businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) );
+                    } else {
+                        businessNameOut.append(element.venue.name);
+                    }
 
                     var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
-                    var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
+                    if("price" in element.venue) {
+                        var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
+                    } else {
+                        var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
+                    }
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.hours.status);
 
 
@@ -169,6 +190,7 @@ $(function () {
         
     });
 
+    // excised 0051
     var fields = [
         ["Name"],
         ["Hours"],
@@ -180,10 +202,10 @@ $(function () {
         $("#topTrow").empty();
         $("#outputTop").empty();
         // Constructing HTML containing the topics information
-        var nameBusiness = $("<th>").text(fields[0]);
-        var hours = $("<th>").text(fields[1]);
-        var location = $("<th>").text(fields[2]);
-        var budget = $("<th>").text(fields[3]);
+        // var nameBusiness = $("<th>").text(fields[0]);
+        // var hours = $("<th>").text(fields[1]);
+        // var location = $("<th>").text(fields[2]);
+        // var budget = $("<th>").text(fields[3]);
         // Constructing HTML containing the topics information
         var nameBusiness2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[0]);
         var hours2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[1]);
@@ -194,6 +216,6 @@ $(function () {
         $("#outputTop").append(hours2);
         $("#outputTop").append(location2);
         $("#outputTop").append(budget2);
-        //console.log($(this));
+        // console.log($(this));
     };
 });
