@@ -87,16 +87,19 @@ $(function () {
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
-                    var businessNameOut = $("<div>").addClass("col-lg-3 topTrow")
-                        .append( $("<a>").attr("href", element.venue.url).text(element.venue.name) );
-
+                    var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
+                    if ("url" in element.venue) {
+                        businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) );
+                    } else {
+                        businessNameOut.append(element.venue.name);
+                    }
 
                     var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
-                    // if(element.venue.price.message) {
+                    if("price" in element.venue) {
                         var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
-                    // } else {
-                        // var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
-                    // }
+                    } else {
+                        var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
+                    }
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.hours.status);
 
 
