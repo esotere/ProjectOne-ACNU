@@ -1,28 +1,108 @@
-//  jQuery wrapper
-$(function () {
-    console.log("ready!")
+
+
+    
+
+    // DECLARING VARIABLES FOR ORIDING AND DESTINATION
+      var userOrigin = '';
+      var userDestination = '';
+
+    // THIS FUNTION GENERATES THE MAP
+      function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        // APPENDS MAP TO DIV
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: {lat: 38.90, lng: -77.03}
+        });
+        directionsDisplay.setMap(map);
+        // APPENDS DIRECTIONS TO DIV
+        directionsDisplay.setPanel(document.getElementById('direction'));
+
+        // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
+        $(document).on('click', function () {
+
+           userDestination = $('#input-1').val() || geoloc();
+           console.log(userDestination);
+
+           userOrigin = $('#input-2').val();
+           console.log(userOrigin);
+
+        // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        //
+        document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+        })
+      }
+
+      // FUNCTRION THAT CREATES DIRECTIONS
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+          origin: userOrigin,
+          destination: userDestination,
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+    
+
+
+
+
+
+
+
+
+
+
+    
     var lat;
     var long;
 
-
-
+      function geoloc() {
+ // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
+ if ("geolocation" in navigator) {
+    /* geolocation is available */
+    navigator.geolocation.getCurrentPosition(function (position) {
+        console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+    });
+} else {
+    console.log('no geolocation');
+    /* geolocation IS NOT available */
+}
+      }
+//  jQuery wrapper
+$(function () {
+    console.log("ready!")
 
     $('#btn-find-loc').on('click', function (event) {
         event.preventDefault();
         console.log('btn-find-loc pressed');
 
-        // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
-        if ("geolocation" in navigator) {
-            /* geolocation is available */
-            navigator.geolocation.getCurrentPosition(function (position) {
-                console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
-                lat = position.coords.latitude;
-                long = position.coords.longitude;
-            });
-        } else {
-            console.log('no geolocation');
-            /* geolocation IS NOT available */
-        }
+        geoloc();
+
+        // // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
+        // if ("geolocation" in navigator) {
+        //     /* geolocation is available */
+        //     navigator.geolocation.getCurrentPosition(function (position) {
+        //         console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
+        //         lat = position.coords.latitude;
+        //         long = position.coords.longitude;
+        //     });
+        // } else {
+        //     console.log('no geolocation');
+        //     /* geolocation IS NOT available */
+        // }
 
         var baseURL = "https://api.foursquare.com/v2/venues/explore"; // ensure https
         // var apiKey = ""; // API key
