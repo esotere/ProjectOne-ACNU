@@ -20,10 +20,33 @@ function initMap() {
     directionsDisplay.setPanel(document.getElementById('direction'));
 
     // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
-    $('#btn-route').on('click', function (event) {
-        // event.preventDefault();
+    // $('#btn-route').on('click', function () {
+    //     // event.preventDefault();
 
-        userDestination = $('#input-1').val();
+    //     userDestination = $('#input-1').val();
+    //     console.log(userDestination);
+
+    //     // userOrigin = $('#input-2').val() || geoloc();
+    //     if (useCurrentLocation) {
+    //         userOrigin = llString;
+    //     } else {
+    //         userOrigin = $('#sel-location').val();
+    //     }
+
+    //     console.log(userOrigin);
+
+    //     // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
+    //     calculateAndDisplayRoute(directionsService, directionsDisplay);
+    //     //
+    //     document.getElementById('mode').addEventListener('change', function () {
+    //         calculateAndDisplayRoute(directionsService, directionsDisplay);
+    //     });
+    // })
+
+    $('#output').on("click", ".table-address", function() {
+        console.log($(this).data());
+
+        userDestination = $(this).data("address");
         console.log(userDestination);
 
         // userOrigin = $('#input-2').val() || geoloc();
@@ -42,6 +65,8 @@ function initMap() {
             calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
     })
+
+
 }
 
 // FUNCTRION THAT CREATES DIRECTIONS
@@ -158,7 +183,13 @@ $(function () {
                         businessNameOut.append(element.venue.name);
                     }
 
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
+                    // console.log(element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
+                    // console.log(element.venue.location.lat + ',' + element.venue.location.lng);
+                    
+                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
+                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
+
                     if ("price" in element.venue) {
                         var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
                     } else {
@@ -219,4 +250,7 @@ $(function () {
         $("#outputTop").append(budget2);
         // console.log($(this));
     };
+
+
+
 });
