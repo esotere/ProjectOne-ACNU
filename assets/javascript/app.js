@@ -1,80 +1,112 @@
+// DECLARING GLOBAL VARIABLES FOR ORIGIN AND DESTINATION
+var userOrigin = '';
+var userDestination = '';
+var lat;
+var long;
+var llString;
+var useCurrentLocation = false;
 
+// THIS FUNTION GENERATES THE MAP
+function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    // APPENDS MAP TO DIV
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: { lat: 38.90, lng: -77.03 }
+    });
+    directionsDisplay.setMap(map);
+    // APPENDS DIRECTIONS TO DIV
+    directionsDisplay.setPanel(document.getElementById('direction'));
 
-    
+    // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
+    // $('#btn-route').on('click', function () {
+    //     // event.preventDefault();
 
-    // DECLARING VARIABLES FOR ORIDING AND DESTINATION
-      var userOrigin = '';
-      var userDestination = '';
+    //     userDestination = $('#input-1').val();
+    //     console.log(userDestination);
 
-    // THIS FUNTION GENERATES THE MAP
-      function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        // APPENDS MAP TO DIV
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 9,
-          center: {lat: 38.90, lng: -77.03}
-        });
-        directionsDisplay.setMap(map);
-        // APPENDS DIRECTIONS TO DIV
-        directionsDisplay.setPanel(document.getElementById('direction'));
+    //     // userOrigin = $('#input-2').val() || geoloc();
+    //     if (useCurrentLocation) {
+    //         userOrigin = llString;
+    //     } else {
+    //         userOrigin = $('#sel-location').val();
+    //     }
 
-        // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
-        $(document).on('click', function () {
+    //     console.log(userOrigin);
 
-           userDestination = $('#input-1').val();
-           console.log(userDestination);
+    //     // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
+    //     calculateAndDisplayRoute(directionsService, directionsDisplay);
+    //     //
+    //     document.getElementById('mode').addEventListener('change', function () {
+    //         calculateAndDisplayRoute(directionsService, directionsDisplay);
+    //     });
+    // })
 
-           userOrigin = $('#input-2').val() || geoloc();
-           console.log(userOrigin);
+    $('#output').on("click", ".table-address", function() {
+        console.log($(this).data());
+
+        userDestination = $(this).data("address");
+        console.log(userDestination);
+
+        // userOrigin = $('#input-2').val() || geoloc();
+        if (useCurrentLocation) {
+            userOrigin = llString;
+        } else {
+            userOrigin = $('#sel-location').val();
+        }
+
+        console.log(userOrigin);
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
         calculateAndDisplayRoute(directionsService, directionsDisplay);
         //
-        document.getElementById('mode').addEventListener('change', function() {
-          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        document.getElementById('mode').addEventListener('change', function () {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
-        })
-      }
-
-      // FUNCTRION THAT CREATES DIRECTIONS
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        var selectedMode = document.getElementById('mode').value;
-        directionsService.route({
-          origin: userOrigin,
-          destination: userDestination,
-          travelMode: google.maps.TravelMode[selectedMode]
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-      }
-    
+    })
 
 
-
-
-    
-    var lat;
-    var long;
-
-      function geoloc() {
- // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
- if ("geolocation" in navigator) {
-    /* geolocation is available */
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
-        lat = position.coords.latitude;
-        long = position.coords.longitude;
-    });
-} else {
-    console.log('no geolocation');
-    /* geolocation IS NOT available */
 }
-      }
+
+// FUNCTRION THAT CREATES DIRECTIONS
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    var selectedMode = document.getElementById('mode').value;
+    directionsService.route({
+        origin: userOrigin,
+        destination: userDestination,
+        travelMode: google.maps.TravelMode[selectedMode]
+    }, function (response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+
+function geoloc() {
+    // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
+    if ("geolocation" in navigator) {
+        /* geolocation is available */
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
+            lat = position.coords.latitude;
+            long = position.coords.longitude;
+            useCurrentLocation = true;
+            llString = lat + ',' + long;
+
+            $('#sel-location').val('[current location]');
+
+        });
+    } else {
+        console.log('no geolocation');
+        useCurrentLocation = false;
+
+        /* geolocation IS NOT available */
+    }
+}
+
 //  jQuery wrapper
 $(function () {
     console.log("ready!")
@@ -84,19 +116,6 @@ $(function () {
         console.log('btn-find-loc pressed');
 
         geoloc();
-
-        // // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
-        // if ("geolocation" in navigator) {
-        //     /* geolocation is available */
-        //     navigator.geolocation.getCurrentPosition(function (position) {
-        //         console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
-        //         lat = position.coords.latitude;
-        //         long = position.coords.longitude;
-        //     });
-        // } else {
-        //     console.log('no geolocation');
-        //     /* geolocation IS NOT available */
-        // }
 
     });
 
@@ -129,9 +148,9 @@ $(function () {
         } else {
             params.near = $('#sel-location').val();
         }
-         
 
-        
+
+
         var queryURL = baseURL + '?' + jQuery.param(params);
 
         console.log(queryURL);
@@ -159,13 +178,19 @@ $(function () {
 
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
                     if ("url" in element.venue) {
-                        businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) );
+                        businessNameOut.append($("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name));
                     } else {
                         businessNameOut.append(element.venue.name);
                     }
 
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
-                    if("price" in element.venue) {
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
+                    // console.log(element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
+                    // console.log(element.venue.location.lat + ',' + element.venue.location.lng);
+                    
+                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
+                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
+
+                    if ("price" in element.venue) {
                         var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
                     } else {
                         var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
@@ -175,9 +200,9 @@ $(function () {
                         businessHoursOut.text(element.venue.hours.status);
                     } else {
                         businessHoursOut.text('n/a');
-                        
+
                     }
-                    
+
 
 
                     businessName.append(businessNameOut);
@@ -194,7 +219,7 @@ $(function () {
 
                 });
             });
-        
+
     });
 
     // excised 0051
@@ -225,4 +250,7 @@ $(function () {
         $("#outputTop").append(budget2);
         // console.log($(this));
     };
+
+
+
 });
