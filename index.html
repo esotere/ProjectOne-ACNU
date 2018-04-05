@@ -20,7 +20,7 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">Impulse</h1>
-                <p class="lead">Plan a spontaneous trip from DC based on budget, date range and return travel and lodging options.</p>
+                <p class="lead">Do Something.</p>
             </div>
         </div>
         <div class="main-container">
@@ -28,7 +28,7 @@
             <form id="find_activity" class="business-search-form">
                 <div class="row">
                     <div class="form-group col-xs-6">
-                        <label for="sel-activity">Activity of interest</label>
+                        <label for="sel-activity"><b>Activity of interest</b></label>
                         <select name="sel-activity" id="sel-activity" class="form-control">
                             <option value="cocktail">Cocktails</option>
                             <option value="movie">Movie</option>
@@ -37,15 +37,16 @@
                             <option value="running">Running</option>
                             <option value="cycling">Cycling</option>
                             <option value="cafe-bistro">Cafe/Bistro</option>
+                            <option value="library">Library</option>
                             <option value="shooting-range">Shooting Range</option>
                         </select>
                         <button class="btn btn-block" id="btn-run-search">Run search</button>
                     </div>
                     <div class="form-group col-xs-6 ">
-                        <label for="sel-location">Location selection</label>
+                        <label for="sel-location"><b>Location Selection</b></label>
                         <input name="sel-location" id="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
                       
-                        <button class="btn btn-block" id="btn-find-loc">Get current location</button>
+                        <button class="btn btn-block" id="btn-find-loc">Get Route</button>
                     </div>
 
                 </div>
@@ -67,26 +68,31 @@
             <!--ADDING MODE OF TRAVEL OPTIONS  -->
             <div id="floating-panel">
             <b>Mode of Travel: </b>
-            <select id="mode">
+            <select id="mode" class="form-control">
               <option value="DRIVING">Driving</option>
               <option value="WALKING">Walking</option>
               <option value="BICYCLING">Bicycling</option>
               <option value="TRANSIT">Transit</option>
             </select>
             </div>
-
+                        <!--PLACE HOLDER ADDRESS INPUTS  -->
+            <div>
+                <!-- <b>Location/Origin: </b>
+                <input type="text" name="input-1" id="input-1" class="form-control" placeholder="Start Point" value=""> -->
+                <b>Destination: </b>
+                <input type="text" name="input-2" id="input-2" class="form-control" placeholder="End Point" value="">
+                <!-- <button class="btn btn-block" id="btn-route">Route</button> -->
+            </div>
             <div class="col-lg-6" id="map">
-
                 <!-- map goes here -->
 
             </div>
 
-            <!--PLACE HOLDER ADDRESS INPUTS  -->
-            <label for="input-1">Destination</label>
+            <!-- PLACE HOLDER ADDRESS INPUTS 
             <input type="text" name="input-1" id="input-1" value="The White House">
-            <!-- <label for="input-2">Origin</label>
-            <input type="text" name="input-2" id="input-2" value="1101 K St NW Washington, DC"> -->
-            
+            <input type="text" name="input-2" id="input-2" value="1101 k st nw washington dc">
+            <button class="btn btn-block" id="btn-route">Route</button> -->
+
             <div class="col-lg-6" id="direction">
                 
                 <!-- direction goes here -->

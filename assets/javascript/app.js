@@ -102,8 +102,6 @@ function geoloc() {
     } else {
         console.log('no geolocation');
         useCurrentLocation = false;
-
-        /* geolocation IS NOT available */
     }
 }
 
@@ -115,7 +113,7 @@ $(function () {
         event.preventDefault();
         console.log('btn-find-loc pressed');
 
-        geoloc();
+        //geoloc();
 
     });
 
@@ -143,11 +141,9 @@ $(function () {
             v: "20180330"
 
         };
-        if (useCurrentLocation) {
-            params.near = llString;
-        } else {
-            params.near = $('#sel-location').val();
-        }
+        (useCurrentLocation) ? params.near = llString : params.near = $('#sel-location').val();
+        
+         
 
 
 
@@ -177,32 +173,21 @@ $(function () {
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
-                    if ("url" in element.venue) {
-                        businessNameOut.append($("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name));
-                    } else {
-                        businessNameOut.append(element.venue.name);
-                    }
-
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
-                    // console.log(element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
-                    // console.log(element.venue.location.lat + ',' + element.venue.location.lng);
+                    "url" in element.venue?
+                     businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) ):
+                     businessNameOut.append(element.venue.name);
                     
-                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
-                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
 
-                    if ("price" in element.venue) {
-                        var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message);
-                    } else {
-                        var budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
-                    }
-                    var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow")
-                    if ("hours" in element.venue) {
-                        businessHoursOut.text(element.venue.hours.status);
-                    } else {
-                        businessHoursOut.text('n/a');
-
-                    }
-
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
+                    ("price" in element.venue)?
+                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
+                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
+                   
+                    var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow");
+                    ("hours" in element.venue) ?
+                    businessHoursOut.text(element.venue.hours.status):
+                    businessHoursOut.text('n/a');                       
+                                    
 
 
                     businessName.append(businessNameOut);
@@ -216,6 +201,15 @@ $(function () {
                     // console.log(budgetOut)
 
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
+
+                   
+                    $(businessNameOut).on('click', function (event) {
+                       // event.preventDefault();
+                        console.log("name clicked");
+                        userOrigin = $('#sel-location').val();
+                        userDestination = $('#input-2').val(element.venue.location.address);
+
+                    })
 
                 });
             });
@@ -254,3 +248,4 @@ $(function () {
 
 
 });
+
