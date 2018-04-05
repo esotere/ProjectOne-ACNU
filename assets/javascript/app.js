@@ -57,6 +57,7 @@ function initMap() {
         }
 
         console.log(userOrigin);
+        
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -178,7 +179,10 @@ $(function () {
                      businessNameOut.append(element.venue.name);
                     
 
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.location.address);
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
+                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
+                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
+
                     ("price" in element.venue)?
                     budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
                     budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
@@ -201,16 +205,6 @@ $(function () {
                     // console.log(budgetOut)
 
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
-
-                   
-                    $(businessNameOut).on('click', function (event) {
-                       // event.preventDefault();
-                        console.log("name clicked");
-                        userOrigin = $('#sel-location').val();
-                        userDestination = $('#input-2').val(element.venue.location.address);
-
-                    })
-
                 });
             });
 
