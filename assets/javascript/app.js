@@ -97,7 +97,7 @@ $(function () {
         event.preventDefault();
         console.log('btn-find-loc pressed');
 
-        geoloc();
+        //geoloc();
 
         // // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
         // if ("geolocation" in navigator) {
@@ -200,7 +200,7 @@ $(function () {
 
                    
                     $(businessNameOut).on('click', function (event) {
-                        event.preventDefault();
+                       // event.preventDefault();
                         console.log("name clicked");
                         userOrigin = $('#sel-location').val();
                         userDestination = $('#input-2').val(element.venue.location.address);
