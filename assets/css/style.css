@@ -8,7 +8,6 @@ body {
     align-content: center;
     width: 25%;
     display: block;
-    /* overflow: auto; */
     overflow: hidden;
 
 }
@@ -25,17 +24,23 @@ body {
 }
 
 .topTrow3 {
-    /* float: left; */
     align-content: center;
     width: 25%;
     display: block;
-    /* position: fixed; */
-    /* overflow: auto; */
     overflow: hidden;
 
 }
 
 #map {
-  height: 500px;
-  width: 500px;
+    margin-top: 2em;
+    height: 500px;
+    width: 500px;
+}
+
+#footer {
+    float: left;
+    padding: 2em;
+    width: 100%;
+    align-content: center;
+
 }
