@@ -57,7 +57,6 @@ function initMap() {
         }
 
         console.log(userOrigin);
-        
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -114,7 +113,7 @@ $(function () {
         event.preventDefault();
         console.log('btn-find-loc pressed');
 
-        geoloc();
+        //geoloc();
 
     });
 
@@ -143,8 +142,8 @@ $(function () {
 
         };
         (useCurrentLocation) ? params.near = llString : params.near = $('#sel-location').val();
-        
-         
+
+
 
 
 
@@ -174,24 +173,22 @@ $(function () {
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
-                    "url" in element.venue?
+                    ("url" in element.venue)?
                      businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) ):
                      businessNameOut.append(element.venue.name);
-                    
 
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
-                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
-                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
 
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow");
+                    businessAddressOut.append( $("<a>").addClass("table-address").text(element.venue.location.address).data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode) );
                     ("price" in element.venue)?
                     budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
                     budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
-                   
+
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow");
                     ("hours" in element.venue) ?
                     businessHoursOut.text(element.venue.hours.status):
-                    businessHoursOut.text('n/a');                       
-                                    
+                    businessHoursOut.text('n/a');
+
 
 
                     businessName.append(businessNameOut);
@@ -205,18 +202,50 @@ $(function () {
                     // console.log(budgetOut)
 
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
+
+
+                    $(businessNameOut).on('click', function (event) {
+                       // event.preventDefault();
+                        console.log("name clicked");
+                        userOrigin = $('#sel-location').val();
+                        userDestination = $('#input-2').val(element.venue.location.address);
+
+                    })
+
                 });
             });
 
     });
 
-    // Table headers on load
-    var fields = ["Name", "Hours", "Location", "Budget"];
-    
-    $("#outputTop").empty();
-    fields.forEach(element => {
-        $("#outputTop").append( $('<div>').addClass("topTrow2 col-lg-3").text(element) );
-    });
+    // excised 0051
+    var fields = [
+        ["Name"],
+        ["Hours"],
+        ["Location"],
+        ["Budget"]
+    ];
+
+    for (var i = 0; i < fields.length; i++) {
+        $("#topTrow").empty();
+        $("#outputTop").empty();
+        // Constructing HTML containing the topics information
+        // var nameBusiness = $("<th>").text(fields[0]);
+        // var hours = $("<th>").text(fields[1]);
+        // var location = $("<th>").text(fields[2]);
+        // var budget = $("<th>").text(fields[3]);
+        // Constructing HTML containing the topics information
+        var nameBusiness2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[0]);
+        var hours2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[1]);
+        var location2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[2]);
+        var budget2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[3]);
+
+        $("#outputTop").append(nameBusiness2);
+        $("#outputTop").append(hours2);
+        $("#outputTop").append(location2);
+        $("#outputTop").append(budget2);
+        // console.log($(this));
+    };
+
+
 
 });
-
