@@ -44,6 +44,7 @@ function initMap() {
     // })
 
     $('#output').on("click", ".table-address", function() {
+        $('#direction').show();
         console.log($(this).data());
 
         userDestination = $(this).data("address");
@@ -119,6 +120,7 @@ $(function () {
 
 
     $('#btn-run-search').on('click', function (event) {
+        $('#output').show();
         event.preventDefault();
         console.log('btn-run-search pressed');
 
