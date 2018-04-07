@@ -189,12 +189,13 @@ $(function () {
         $("#output").addClass("animated jello").one(animationend, function () {
             $(this).removeClass("animated jello");
         });
-    // });
+        // });
 
-    $('.main-container').on('click', ".table-address", function () {
-      console.log('table click')
-      $("#direction").addClass("animated bounceInUp").one(animationend, function () {
-        $(this).removeClass("animated bounceInUp");
+        $('.main-container').on('click', ".table-address", function () {
+            console.log('table click')
+            $("#direction").addClass("animated bounceInUp").one(animationend, function () {
+                $(this).removeClass("animated bounceInUp");
+            });
         });
-      });
     });
+});
