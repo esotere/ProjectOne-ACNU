@@ -203,10 +203,11 @@ $(function () {
                 });
             });
 
+        console.log($('#sel-location').val())
         if ($("#sel-location").val(" ")) {
 
             var noAddress = $("#sel-location").addClass("warning");
-            noAddress.val("Address, City, State, Zip or click Get Location")
+            noAddress.val("")
         }
         else {
             var addPlus = $("#sel-location").addClass("cool");
@@ -217,6 +218,7 @@ $(function () {
         $("#sel-location").on("click", function () {
             $(this).val(" ")
             var addPlus = $("#sel-location").addClass("cool").val(" ");
+           // $(this).removeClass("warning");
         })
 
     });
