@@ -55,7 +55,6 @@ function initMap() {
 
         console.log(userOrigin);
 
-
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
         calculateAndDisplayRoute(directionsService, directionsDisplay);
         //
@@ -170,23 +169,21 @@ $(function () {
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
-                    "url" in element.venue ?
-                        businessNameOut.append($("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name)) :
-                        businessNameOut.append(element.venue.name);
+                    ("url" in element.venue)?
+                     businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) ):
+                     businessNameOut.append(element.venue.name);
 
 
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
-                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
-                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
-
-                    ("price" in element.venue) ?
-                        budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message) :
-                        budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow");
+                    businessAddressOut.append( $("<a>").addClass("table-address").text(element.venue.location.address).data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode) );
+                    ("price" in element.venue)?
+                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
+                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
 
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow");
                     ("hours" in element.venue) ?
-                        businessHoursOut.text(element.venue.hours.status) :
-                        businessHoursOut.text('n/a');
+                    businessHoursOut.text(element.venue.hours.status):
+                    businessHoursOut.text('n/a');
 
 
 
@@ -197,30 +194,28 @@ $(function () {
 
                     businessName.append(newRow);
 
-                    // console.log(businessNameOut)
-                    // console.log(businessHoursOut)
-                    // console.log(businessAddressOut)
-                    // console.log(budgetOut)
 
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
+
+
                 });
             });
 
-        // if ($("#sel-location").val(" ")) {
+        if ($("#sel-location").val(" ")) {
 
-        //     var noAddress = $("#sel-location").addClass("warning");
-        //     noAddress.val("Address, City, State, Zip or click Get Location")
-        // }
-        // else {
-        //     var addPlus = $("#sel-location").addClass("cool");
-        //     params.near = $("#sel-location").val().trim()
+            var noAddress = $("#sel-location").addClass("warning");
+            noAddress.val("Address, City, State, Zip or click Get Location")
+        }
+        else {
+            var addPlus = $("#sel-location").addClass("cool");
+            params.near = $("#sel-location").val().trim()
 
-        // }
+        }
 
-        // $("#sel-location").on("click", function () {
-        //     $(this).val(" ")
-        //     var addPlus = $("#sel-location").addClass("cool").val(" ");
-        // })
+        $("#sel-location").on("click", function () {
+            $(this).val(" ")
+            var addPlus = $("#sel-location").addClass("cool").val(" ");
+        })
 
     });
 
@@ -231,6 +226,22 @@ $(function () {
     fields.forEach(element => {
         $("#outputTop").append($('<div>').addClass("topTrow2 col-lg-3").text(element));
     });
+  });
 
-});
+    // ANIMATIONS
+    $(function () {
+    var animationend = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSanimationEnd';
 
+      $("#btn-run-search").on('click', function () {
+        $("#output").addClass("animated jello").one(animationend, function () {
+          $(this).removeClass("animated jello");
+          });
+        });
+    });
+
+    $(".table-address").on('click', function () {
+      $("#direction").addClass("animated infinate bounceInUp").one(animationend, function () {
+        $(this).removeClass("animated bounceInUp");
+        });
+      });
+// });
