@@ -19,31 +19,7 @@ function initMap() {
     // APPENDS DIRECTIONS TO DIV
     directionsDisplay.setPanel(document.getElementById('direction'));
 
-    // CREATES DIRECTIONS WHEN ORIGIN AND DESTINATION INPUTS ARE CLICKED
-    // $('#btn-route').on('click', function () {
-    //     // event.preventDefault();
-
-    //     userDestination = $('#input-1').val();
-    //     console.log(userDestination);
-
-    //     // userOrigin = $('#input-2').val() || geoloc();
-    //     if (useCurrentLocation) {
-    //         userOrigin = llString;
-    //     } else {
-    //         userOrigin = $('#sel-location').val();
-    //     }
-
-    //     console.log(userOrigin);
-
-    //     // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
-    //     calculateAndDisplayRoute(directionsService, directionsDisplay);
-    //     //
-    //     document.getElementById('mode').addEventListener('change', function () {
-    //         calculateAndDisplayRoute(directionsService, directionsDisplay);
-    //     });
-    // })
-
-    $('#output').on("click", ".table-address", function() {
+    $('#output').on("click", ".table-address", function () {
         $('#direction').show();
         console.log($(this).data());
 
@@ -66,7 +42,6 @@ function initMap() {
             calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
     })
-
 
 }
 
@@ -145,10 +120,6 @@ $(function () {
         };
         (useCurrentLocation) ? params.near = llString : params.near = $('#sel-location').val();
 
-
-
-
-
         var queryURL = baseURL + '?' + jQuery.param(params);
 
         console.log(queryURL);
@@ -171,29 +142,21 @@ $(function () {
                 venueList.forEach(element => {
                     var newRow = $('<div>').addClass("row");
 
-                    // var businessNameOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.name);
-                    // var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
-                    // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
-                    // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
+                    var businessNameOut = $("<div>").addClass("col-xs-3 topTrow");
+                    ("url" in element.venue) ?
+                        businessNameOut.append($("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name)) :
+                        businessNameOut.append(element.venue.name);
 
-                    var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
-                    ("url" in element.venue)?
-                     businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) ):
-                     businessNameOut.append(element.venue.name);
+                    var businessAddressOut = $("<div>").addClass("col-xs-3 topTrow");
+                    businessAddressOut.append($("<a>").addClass("table-address").text(element.venue.location.address).data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode));
+                    ("price" in element.venue) ?
+                        budgetOut = $("<div>").addClass("col-xs-3 topTrow").text(element.venue.price.message) :
+                        budgetOut = $("<div>").addClass("col-xs-3 topTrow").text('n/a');
 
-
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow");
-                    businessAddressOut.append( $("<a>").addClass("table-address").text(element.venue.location.address).data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode) );
-                    ("price" in element.venue)?
-                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
-                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
-
-                    var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow");
+                    var businessHoursOut = $("<div>").addClass("col-xs-3 topTrow");
                     ("hours" in element.venue) ?
-                    businessHoursOut.text(element.venue.hours.status):
-                    businessHoursOut.text('n/a');
-
-
+                        businessHoursOut.text(element.venue.hours.status) :
+                        businessHoursOut.text('n/a');
 
                     newRow.append(businessNameOut);
                     newRow.append(businessHoursOut);
@@ -202,9 +165,7 @@ $(function () {
 
                     businessName.append(newRow);
 
-
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
-
 
                 });
             });
@@ -216,18 +177,17 @@ $(function () {
 
     $("#outputTop").empty();
     fields.forEach(element => {
-        $("#outputTop").append( $('<div>').addClass("topTrow2 col-xs-3").text(element) );
+        $("#outputTop").append($('<div>').addClass("topTrow2 col-xs-3").text(element));
     });
-  });
+});
 
-    // ANIMATIONS
-    $(function () {
+// ANIMATIONS
+$(function () {
     var animationend = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSanimationEnd';
 
-      $("#btn-run-search").on('click', function () {
+    $("#btn-run-search").on('click', function () {
         $("#output").addClass("animated jello").one(animationend, function () {
-          $(this).removeClass("animated jello");
-          });
+            $(this).removeClass("animated jello");
         });
     // });
 
