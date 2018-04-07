@@ -209,34 +209,14 @@ $(function () {
 
     });
 
-    // excised 0051
-    var fields = [
-        ["Name"],
-        ["Hours"],
-        ["Location"],
-        ["Budget"]
-    ];
+    // Table headers on load
+    var fields = ["Name", "Hours", "Location", "Budget"];
 
-    for (var i = 0; i < fields.length; i++) {
-        $("#topTrow").empty();
-        $("#outputTop").empty();
-        // Constructing HTML containing the topics information
-        // var nameBusiness = $("<th>").text(fields[0]);
-        // var hours = $("<th>").text(fields[1]);
-        // var location = $("<th>").text(fields[2]);
-        // var budget = $("<th>").text(fields[3]);
-        // Constructing HTML containing the topics information
-        var nameBusiness2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[0]);
-        var hours2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[1]);
-        var location2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[2]);
-        var budget2 = $("<div  class='topTrow2 col-lg-3'>").text(fields[3]);
-
-        $("#outputTop").append(nameBusiness2);
-        $("#outputTop").append(hours2);
-        $("#outputTop").append(location2);
-        $("#outputTop").append(budget2);
-        // console.log($(this));
-    };
+    $("#outputTop").empty();
+    fields.forEach(element => {
+        $("#outputTop").append( $('<div>').addClass("topTrow2 col-lg-3").text(element) );
+    });
+  });
 
     // ANIMATIONS
     $(function () {
@@ -254,4 +234,4 @@ $(function () {
         $(this).removeClass("animated bounceInUp");
         });
       });
-});
+// });
