@@ -250,6 +250,20 @@ $(function () {
         // console.log($(this));
     };
 
+    // ANIMATIONS
+    $(function () {
+    var animationend = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSanimationEnd';
 
+      $("#btn-run-search").on('click', function () {
+        $("#output").addClass("animated jello").one(animationend, function () {
+          $(this).removeClass("animated jello");
+          });
+        });
+    });
 
+    $("a:table-address").on('click', function () {
+      $("#direction").addClass("animated infinate bounceInUp").one(animationend, function () {
+        $(this).removeClass("animated bounceInUp");
+        });
+      });
 });
