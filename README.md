@@ -11,6 +11,7 @@ can be clicked to show directions below the results.
 
 * Bootstrap 3.3.7 for styling
 * jQuery 3.2.1 for DOM traversal and AJAX
+* Animate.css
 * HTML5 geolocation
 
 ## Contributors
