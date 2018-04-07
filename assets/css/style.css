@@ -18,15 +18,32 @@ body {
 #output {
 
     background-image: url("../images/do-it.gif");
-    margin: auto; 
+    margin: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: auto;
 }
 
+#check-direction {
+    color: white;
+}
+
+#travel-mode {
+    color: white;
+}
+
+.text {
+    color: white;
+}
+
+.text-uppercase {
+    color: white;
+    font-weight: bold;
+    
+}
+
 .topTrow {
-    /* float: left; */
     align-content: center;
     width: 25%;
     display: block;
@@ -35,7 +52,6 @@ body {
 }
 
 .topTrow2 {
-    /* float: left; */
     align-content: center;
     width: 25%;
     overflow: hidden;
@@ -70,7 +86,7 @@ body {
     margin-top: 0.5em;
     background-image: url("../images/one-direction.png");
     background-size: cover;
-    margin-left: 80px; 
+    margin-left: 80px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -103,25 +119,6 @@ body {
 #output {
     display: none;
     color: white;
-    /* padding:20px; */
-    /* opacity: 0.5;
-}
-
-.text {
-    color: white;
-}
-
-.text-uppercase  {
-    color: white;
-}
-
-#floating-panel {
-    color: white;
-}
-
-a:link {
-    /* color: rgb(216, 197, 112); */
-
 }
 
 a:visited {
@@ -129,7 +126,6 @@ a:visited {
 }
 
 a:hover {
-    /* color: white; */
     color: hotpink;
 }
 
