@@ -20,3 +20,8 @@ can be clicked to show directions below the results.
 * Nate Schubert @NiceGuyN8
 * Uche Okonkwo @esotere
 
+### Photo sources
+
+* Runner: https://www.123rf.com/photo_18911557_athlete-running-sport-feet-on-trail-healthy-lifestyle-fitness.html
+* Skydiving: http://wallpapers.ae/air-jumping-sports-wallpaper.html
+* One Direction: http://www.fanpop.com/clubs/one-direction/images/35576791/title/1d-wallpapers-wallpaper
