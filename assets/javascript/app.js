@@ -44,6 +44,7 @@ function initMap() {
     // })
 
     $('#output').on("click", ".table-address", function() {
+        $('#direction').show();
         console.log($(this).data());
 
         userDestination = $(this).data("address");
