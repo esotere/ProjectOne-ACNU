@@ -231,9 +231,10 @@ $(function () {
         });
     // });
 
-    $(".table-address").on('click', function () {
-      $("#direction").addClass("animated infinate bounceInUp").one(animationend, function () {
+    $('.main-container').on('click', ".table-address", function () {
+      console.log('table click')
+      $("#direction").addClass("animated bounceInUp").one(animationend, function () {
         $(this).removeClass("animated bounceInUp");
         });
       });
-});
+    });
