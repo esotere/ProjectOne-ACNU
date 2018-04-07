@@ -1,6 +1,27 @@
 body {
     box-sizing: border-box;
     border-color: black;
+    background-image: url("../images/skydive.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+    background-image: url("../images/running.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#output {
+
+    background-image: url("../images/cocktail.jpg");
+    margin: auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
 .topTrow {
@@ -23,6 +44,10 @@ body {
 
 }
 
+.status-message {
+    display: none;
+}
+
 .topTrow3 {
     align-content: center;
     width: 25%;
@@ -37,10 +62,65 @@ body {
     width: 500px;
 }
 
+#direction {
+    background-image: url("../images/one-direction.png");
+    margin: auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
 #footer {
     float: left;
     padding: 2em;
     width: 100%;
     align-content: center;
+    color: white;
 
+}
+
+#btn-run-search {
+    line-height: 5px;
+}
+
+#btn-find-loc {
+    line-height: 5px;
+}
+
+#outputTop {
+    color: white;
+}
+
+#output {
+    color: white;
+    /* opacity: 0.5; */
+}
+
+.text {
+    color: white;
+}
+
+.text-uppercase  {
+    color: white;
+}
+
+#floating-panel {
+    color: white;
+}
+
+a:link {
+    color: rgb(216, 197, 112);
+}
+
+a:visited {
+    color: green;
+}
+
+a:hover {
+    /* color: white; */
+    color: hotpink;
+}
+
+a:active {
+    color: blue;
 }
