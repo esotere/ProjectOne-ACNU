@@ -43,18 +43,18 @@ function initMap() {
     //     });
     // })
 
-    $('#output').on("click", ".table-address", function() {
+    $('#output').on("click", ".table-address", function () {
         console.log($(this).data());
 
         userDestination = $(this).data("address");
         console.log(userDestination);
 
         // userOrigin = $('#input-2').val() || geoloc();
-         (useCurrentLocation) ? userOrigin = llString : userOrigin = $('#sel-location').val();
-        
+        (useCurrentLocation) ? userOrigin = llString : userOrigin = $('#sel-location').val();
+
 
         console.log(userOrigin);
-        
+
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -75,8 +75,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         destination: userDestination,
         travelMode: google.maps.TravelMode[selectedMode]
     }, function (response, status) {
-         (status === 'OK') ? directionsDisplay.setDirections(response) : window.alert('Directions request failed due to ' + status);
-        
+        (status === 'OK') ? directionsDisplay.setDirections(response) : window.alert('Directions request failed due to ' + status);
+
     });
 }
 
@@ -137,8 +137,8 @@ $(function () {
 
         };
         (useCurrentLocation) ? params.near = llString : params.near = $('#sel-location').val();
-        
-         
+
+
 
 
 
@@ -159,35 +159,35 @@ $(function () {
                 // results.empty();
                 businessName.empty();
 
-                
+
                 var venueList = response.response.groups[0].items;
                 venueList.forEach(element => {
                     var newRow = $('<div>').addClass("row");
-                    
+
                     // var businessNameOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.name);
                     // var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
-                    "url" in element.venue?
-                     businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) ):
-                     businessNameOut.append(element.venue.name);
-                    
+                    "url" in element.venue ?
+                        businessNameOut.append($("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name)) :
+                        businessNameOut.append(element.venue.name);
+
 
                     var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
                     businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
                     businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
 
-                    ("price" in element.venue)?
-                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
-                    budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
-                   
+                    ("price" in element.venue) ?
+                        budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message) :
+                        budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
+
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow");
                     ("hours" in element.venue) ?
-                    businessHoursOut.text(element.venue.hours.status):
-                    businessHoursOut.text('n/a');                       
-                                    
+                        businessHoursOut.text(element.venue.hours.status) :
+                        businessHoursOut.text('n/a');
+
 
 
                     newRow.append(businessNameOut);
@@ -206,14 +206,30 @@ $(function () {
                 });
             });
 
+        // if ($("#sel-location").val(" ")) {
+
+        //     var noAddress = $("#sel-location").addClass("warning");
+        //     noAddress.val("Address, City, State, Zip or click Get Location")
+        // }
+        // else {
+        //     var addPlus = $("#sel-location").addClass("cool");
+        //     params.near = $("#sel-location").val().trim()
+
+        // }
+
+        // $("#sel-location").on("click", function () {
+        //     $(this).val(" ")
+        //     var addPlus = $("#sel-location").addClass("cool").val(" ");
+        // })
+
     });
 
     // Table headers on load
     var fields = ["Name", "Hours", "Location", "Budget"];
-    
+
     $("#outputTop").empty();
     fields.forEach(element => {
-        $("#outputTop").append( $('<div>').addClass("topTrow2 col-lg-3").text(element) );
+        $("#outputTop").append($('<div>').addClass("topTrow2 col-lg-3").text(element));
     });
 
 });
