@@ -163,7 +163,7 @@ $(function () {
 
                 });
             });
-
+        $('#btn-run-search').on('click', function (event) {
         console.log($('#sel-location').val())
         if ($("#sel-location").val(" ")) {
 
@@ -179,8 +179,9 @@ $(function () {
         $("#sel-location").on("click", function () {
             $(this).val(" ")
             var addPlus = $("#sel-location").addClass("cool").val(" ");
-           // $(this).removeClass("warning");
+            $(this).removeClass("cool");
         })
+    })
 
     });
 
@@ -201,7 +202,7 @@ $(function () {
         $("#output").addClass("animated jello").one(animationend, function () {
             $(this).removeClass("animated jello");
         });
-    // });
+     });
 
     $('.main-container').on('click', ".table-address", function () {
       console.log('table click')
