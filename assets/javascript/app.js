@@ -57,7 +57,6 @@ function initMap() {
         }
 
         console.log(userOrigin);
-        
 
         // CALLING THE FUNCTION TO GENERATE DIRCECTIONS
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -143,8 +142,8 @@ $(function () {
 
         };
         (useCurrentLocation) ? params.near = llString : params.near = $('#sel-location').val();
-        
-         
+
+
 
 
 
@@ -165,35 +164,33 @@ $(function () {
                 // results.empty();
                 businessName.empty();
 
-                
+
                 var venueList = response.response.groups[0].items;
                 venueList.forEach(element => {
                     var newRow = $('<div>').addClass("row");
-                    
+
                     // var businessNameOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.name);
                     // var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
                     // var businessHoursOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.hours.status);
 
                     var businessNameOut = $("<div>").addClass("col-lg-3 topTrow");
-                    "url" in element.venue?
+                    ("url" in element.venue)?
                      businessNameOut.append( $("<a>").attr("href", element.venue.url).attr("target", "_blank").text(element.venue.name) ):
                      businessNameOut.append(element.venue.name);
-                    
 
-                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow table-address").text(element.venue.location.address);
-                    businessAddressOut.data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode);
-                    businessAddressOut.data("ll", element.venue.location.lat + ',' + element.venue.location.lng);
 
+                    var businessAddressOut = $("<div>").addClass("col-lg-3 topTrow");
+                    businessAddressOut.append( $("<a>").addClass("table-address").text(element.venue.location.address).data("address", element.venue.location.address + ' ' + element.venue.location.city + ' ' + element.venue.location.state + ' ' + element.venue.location.postalCode) );
                     ("price" in element.venue)?
                     budgetOut = $("<div>").addClass("col-lg-3 topTrow").text(element.venue.price.message):
                     budgetOut = $("<div>").addClass("col-lg-3 topTrow").text('n/a');
-                   
+
                     var businessHoursOut = $("<div>").addClass("col-lg-3 topTrow");
                     ("hours" in element.venue) ?
                     businessHoursOut.text(element.venue.hours.status):
-                    businessHoursOut.text('n/a');                       
-                                    
+                    businessHoursOut.text('n/a');
+
 
 
                     newRow.append(businessNameOut);
@@ -203,12 +200,10 @@ $(function () {
 
                     businessName.append(newRow);
 
-                    // console.log(businessNameOut)
-                    // console.log(businessHoursOut)
-                    // console.log(businessAddressOut)
-                    // console.log(budgetOut)
 
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
+
+
                 });
             });
 
@@ -216,11 +211,27 @@ $(function () {
 
     // Table headers on load
     var fields = ["Name", "Hours", "Location", "Budget"];
-    
+
     $("#outputTop").empty();
     fields.forEach(element => {
         $("#outputTop").append( $('<div>').addClass("topTrow2 col-lg-3").text(element) );
     });
+  });
 
-});
+    // ANIMATIONS
+    $(function () {
+    var animationend = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSanimationEnd';
 
+      $("#btn-run-search").on('click', function () {
+        $("#output").addClass("animated jello").one(animationend, function () {
+          $(this).removeClass("animated jello");
+          });
+        });
+    });
+
+    $(".table-address").on('click', function () {
+      $("#direction").addClass("animated infinate bounceInUp").one(animationend, function () {
+        $(this).removeClass("animated bounceInUp");
+        });
+      });
+// });
