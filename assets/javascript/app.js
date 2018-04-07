@@ -113,7 +113,7 @@ $(function () {
         event.preventDefault();
         console.log('btn-find-loc pressed');
 
-        //geoloc();
+        geoloc();
 
     });
 
@@ -200,21 +200,9 @@ $(function () {
 
                     businessName.append(newRow);
 
-                    // console.log(businessNameOut)
-                    // console.log(businessHoursOut)
-                    // console.log(businessAddressOut)
-                    // console.log(budgetOut)
 
                     //Add code to color code hours divs green = open, yellow < 4hrs until close, red = closed
 
-
-                    $(businessNameOut).on('click', function (event) {
-                       // event.preventDefault();
-                        console.log("name clicked");
-                        userOrigin = $('#sel-location').val();
-                        userDestination = $('#input-2').val(element.venue.location.address);
-
-                    })
 
                 });
             });
@@ -261,7 +249,7 @@ $(function () {
         });
     });
 
-    $("a:table-address").on('click', function () {
+    $(".table-address").on('click', function () {
       $("#direction").addClass("animated infinate bounceInUp").one(animationend, function () {
         $(this).removeClass("animated bounceInUp");
         });
