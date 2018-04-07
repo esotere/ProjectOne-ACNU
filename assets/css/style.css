@@ -17,17 +17,16 @@ body {
 
 #output {
 
-    /* background-image: url("../images/cocktail.jpg"); */
-    background-color: aquamarine;
-    margin: auto;
+    background-image: url("../images/do-it.gif");
+    margin: auto; 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
-    padding:20px;
+    background-size: cover;
+    overflow-y: auto;
 }
 
 .topTrow {
-    float: left;
+    /* float: left; */
     align-content: center;
     width: 25%;
     display: block;
@@ -36,7 +35,7 @@ body {
 }
 
 .topTrow2 {
-    float: left;
+    /* float: left; */
     align-content: center;
     width: 25%;
     overflow: hidden;
@@ -61,18 +60,23 @@ body {
 
 #map {
     margin-top: 2em;
+    margin-right: 50px;
     height: 500px;
     width: 500px;
 }
 
 #direction {
+    display: none;
+    margin-top: 0.5em;
     background-image: url("../images/one-direction.png");
-    /* margin: auto;  */
-    margin-top: 8px;
-    margin-left: 15px;
+    background-size: cover;
+    margin-left: 80px; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
+    height: 500px;
+    width: 500px;
+    overflow-y: auto;
 }
 
 #footer {
@@ -97,9 +101,10 @@ body {
 }
 
 #output {
-    /* color: white; */
+    display: none;
+    color: white;
     /* padding:20px; */
-    /* opacity: 0.5; */
+    /* opacity: 0.5;
 }
 
 .text {
