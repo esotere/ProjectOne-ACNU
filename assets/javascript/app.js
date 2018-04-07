@@ -120,6 +120,7 @@ $(function () {
 
 
     $('#btn-run-search').on('click', function (event) {
+        $('#output').show();
         event.preventDefault();
         console.log('btn-run-search pressed');
 

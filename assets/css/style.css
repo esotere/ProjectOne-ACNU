@@ -101,6 +101,7 @@ body {
 }
 
 #output {
+    display: none;
     color: white;
     /* padding:20px; */
     /* opacity: 0.5;
