@@ -164,11 +164,11 @@ $(function () {
                 // results.empty();
                 businessName.empty();
 
-                
+
                 var venueList = response.response.groups[0].items;
                 venueList.forEach(element => {
                     var newRow = $('<div>').addClass("row");
-                    
+
                     // var businessNameOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.name);
                     // var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
