@@ -226,7 +226,7 @@ $(function () {
 
     $("#outputTop").empty();
     fields.forEach(element => {
-        $("#outputTop").append($('<div>').addClass("topTrow2 col-lg-3").text(element));
+        $("#outputTop").append( $('<div>').addClass("topTrow2 col-xs-3").text(element) );
     });
   });
 
