@@ -9,6 +9,30 @@
 
     <input type="text" name="user origin" value="">
 
+    <script type="text/javascript">
+
+    function geoloc() {
+        // Could substittue based on https://www.w3schools.com/html/html5_geolocation.asp
+        if ("geolocation" in navigator) {
+            /* geolocation is available */
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log('lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude);
+                lat = position.coords.latitude;
+                long = position.coords.longitude;
+                useCurrentLocation = true;
+                llString = lat + ',' + long;
+
+                $('#sel-location').val('[current location]');
+
+            });
+        } else {
+            console.log('no geolocation');
+            useCurrentLocation = false;
+        }
+    }
+
+    </script>
+
 
   </body>
 </html>
