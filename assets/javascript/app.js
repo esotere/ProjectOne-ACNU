@@ -159,14 +159,16 @@ $(function () {
             .then(function (response) {
                 console.log(response);
 
-                var results = $('#results-tbody');
+                // var results = $('#results-tbody');
                 var businessName = $("#output");
-                results.empty();
+                // results.empty();
                 businessName.empty();
 
+                
                 var venueList = response.response.groups[0].items;
                 venueList.forEach(element => {
-
+                    var newRow = $('<div>').addClass("row");
+                    
                     // var businessNameOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.name);
                     // var businessAddressOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.location.address);
                     // var budgetOut = $("<div col-lg-3 class='topTrow'>").attr("href", element.venue.url).text(element.venue.price.message);
@@ -191,10 +193,12 @@ $(function () {
 
 
 
-                    businessName.append(businessNameOut);
-                    businessName.append(businessHoursOut);
-                    businessName.append(businessAddressOut);
-                    businessName.append(budgetOut);
+                    newRow.append(businessNameOut);
+                    newRow.append(businessHoursOut);
+                    newRow.append(businessAddressOut);
+                    newRow.append(budgetOut);
+
+                    businessName.append(newRow);
 
                     // console.log(businessNameOut)
                     // console.log(businessHoursOut)
