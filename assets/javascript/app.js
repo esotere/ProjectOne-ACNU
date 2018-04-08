@@ -26,7 +26,7 @@ function initMap() {
         userDestination = $(this).data("address");
         console.log(userDestination);
 
-        // userOrigin = $('#input-2').val() || geoloc();
+        
         (useCurrentLocation) ? userOrigin = llString : userOrigin = $('#sel-location').val();
 
 
@@ -163,27 +163,33 @@ $(function () {
 
                 });
             });
-        $('#btn-run-search').on('click', function (event) {
-        console.log($('#sel-location').val())
-        if ($("#sel-location").val(" ")) {
+            // $("#sel-location").on("change", function(check) {  
+        // // $('#btn-run-search').on('click', function (event) {
+         console.log($('#sel-location').val())
+         if ($("#sel-location").val(" ")) {
 
-            var noAddress = $("#sel-location").addClass("warning");
-            noAddress.val("")
-        }
-        else {
+             var noAddress = $("#sel-location").addClass("warning");
+             noAddress.val("");
+         }
+         else {
             var addPlus = $("#sel-location").addClass("cool");
-            params.near = $("#sel-location").val().trim()
+            //params.near = $("#sel-location").val().trim()
 
-        }
+         }
 
-        $("#sel-location").on("click", function () {
-            $(this).val(" ")
+         $("#sel-location").on("click", function () {
+            //$(this).val(" ")
             var addPlus = $("#sel-location").addClass("cool").val(" ");
-            $(this).removeClass("cool");
-        })
-    })
+           // userOrigin = $("#sel-location").val().trim()
 
-    });
+             $(this).removeClass("warning");
+             
+            
+        //     })
+        // })
+     })
+
+     });
 
     // Table headers on load
     var fields = ["Name", "Hours", "Location", "Budget"];
@@ -202,12 +208,13 @@ $(function () {
         $("#output").addClass("animated jello").one(animationend, function () {
             $(this).removeClass("animated jello");
         });
-     });
+        // });
 
-    $('.main-container').on('click', ".table-address", function () {
-      console.log('table click')
-      $("#direction").addClass("animated bounceInUp").one(animationend, function () {
-        $(this).removeClass("animated bounceInUp");
+        $('.main-container').on('click', ".table-address", function () {
+            console.log('table click')
+            $("#direction").addClass("animated bounceInUp").one(animationend, function () {
+                $(this).removeClass("animated bounceInUp");
+            });
         });
-      });
     });
+});
