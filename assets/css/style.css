@@ -145,7 +145,7 @@ a:active {
 
 }
 
-@media only screen and (max-width: 624px) {
+@media only screen and (max-width: 524px) {
     /* For cell phones: */
     #map {
     height: 300px;
@@ -154,24 +154,32 @@ a:active {
     #directions {
     height: 300px;
     width: 300px;
+    display: none;
+    margin-top: 0.5em;
+    background-image: url("../images/one-direction.png");
+    background-size: cover;
+    margin-left: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    overflow-y: auto;
      }
-    .col-xs-12 {width: 100%;}
+    
 }
-@media only screen and (max-width: 968px) {
+@media only screen and (min-width: 525px) {
     /* For tablets: */
     #map {
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
     }
     #directions {
-    height: 300px;
-    width: 300px;       
+    height: 400px;
+    width: 400px;       
     }
-
-    .col-md-12 {width: 100%;}
+       
 }
 
-@media only screen  and (min-width : 1224px) {
+@media only screen  and (min-width : 969px) {
     /* Desktops and laptops ----------- */
     #map {
     height: 500px;
@@ -181,13 +189,12 @@ a:active {
     height: 500px;
     width: 500px;        
      }
-   .col-lg-12 {width: 100%}
 }
     
    
 @media only screen  and (min-width : 1824px) {
      /* Large screens ----------- */
-    .col-lg-12 {width: 100%}
+    .col-xl-12 {width: 100%}
 }
     
 
