@@ -144,3 +144,50 @@ a:active {
     border-color: palegreen;
 
 }
+
+@media only screen and (max-width: 624px) {
+    /* For cell phones: */
+    #map {
+    height: 300px;
+    width: 300px;
+     }
+    #directions {
+    height: 300px;
+    width: 300px;
+     }
+    .col-xs-12 {width: 100%;}
+}
+@media only screen and (max-width: 968px) {
+    /* For tablets: */
+    #map {
+    height: 300px;
+    width: 300px;
+    }
+    #directions {
+    height: 300px;
+    width: 300px;       
+    }
+
+    .col-md-12 {width: 100%;}
+}
+
+@media only screen  and (min-width : 1224px) {
+    /* Desktops and laptops ----------- */
+    #map {
+    height: 500px;
+    width: 500px;
+     }
+    #directions {
+    height: 500px;
+    width: 500px;        
+     }
+   .col-lg-12 {width: 100%}
+}
+    
+   
+@media only screen  and (min-width : 1824px) {
+     /* Large screens ----------- */
+    .col-lg-12 {width: 100%}
+}
+    
+

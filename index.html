@@ -50,7 +50,7 @@
                         <label for="sel-location">
                             <b>Location Selection</b>
                         </label>
-                        <input name="sel-location" id="sel-location" class="form-control" placeholder="address, neighborhood, city, state, or zip">
+                        <input name="sel-location" id="sel-location" class="form-control change" placeholder="address, neighborhood, city, state, or zip">
                         <br>
                         <button class="btn btn-block" id="btn-find-loc">Get Location</button>
                     </div>
@@ -89,17 +89,18 @@
                     <option value="TRANSIT">Transit</option>
                 </select>
             </div>
+            <div id="crop" class="col-lg-12">
+                <div class="col-lg-6" id="map">
+                    <!-- map goes here -->
 
-            <div class="col-lg-6" id="map">
-                <!-- map goes here -->
+                </div>
+                <br>
 
-            </div>
-            <br>
+                <div class="col-lg-6" id="direction">
 
-            <div class="col-lg-6" id="direction">
+                    <!-- direction goes here -->
 
-                <!-- direction goes here -->
-
+                </div>
             </div>
 
         </div>

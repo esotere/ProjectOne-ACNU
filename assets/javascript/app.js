@@ -166,29 +166,26 @@ $(function () {
             // $("#sel-location").on("change", function(check) {  
         // // $('#btn-run-search').on('click', function (event) {
          console.log($('#sel-location').val())
-         if ($("#sel-location").val(" ")) {
-
+        // if ($("#sel-location").val(" ")) {
+            userOrigin = $('#sel-location').val();
+        if ( userOrigin === "") {
              var noAddress = $("#sel-location").addClass("warning");
-             noAddress.val("");
-         }
-         else {
-            var addPlus = $("#sel-location").addClass("cool");
-            //params.near = $("#sel-location").val().trim()
-
-         }
+            // noAddress.val("");
+                    
 
          $("#sel-location").on("click", function () {
-            //$(this).val(" ")
+            $(this).val(" ")
             var addPlus = $("#sel-location").addClass("cool").val(" ");
            // userOrigin = $("#sel-location").val().trim()
-
-             $(this).removeClass("warning");
-             
-            
-        //     })
+             $(this).removeClass("warning");            
         // })
+    // })
      })
-
+ }
+         else {
+            var addPlus = $("#sel-location").addClass("cool");
+            
+         }
      });
 
     // Table headers on load
