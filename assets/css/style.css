@@ -16,7 +16,7 @@ body {
 }
 
 #output {
-
+    height: 500px;
     background-image: url("../images/do-it.gif");
     margin: auto;
     background-position: center;
