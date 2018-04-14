@@ -169,7 +169,30 @@ $(function () {
 
                 });
             });
-
+            // adding UI for empty location field
+            console.log($('#sel-location').val())
+            // if ($("#sel-location").val(" ")) {
+    
+    
+            userOrigin = $('#sel-location').val();
+            if ( userOrigin === "") {
+                 var noAddress = $("#sel-location").addClass("warning");
+                // noAddress.val("");
+                        
+    
+             $("#sel-location").on("click", function () {
+                $(this).val(" ")
+                var addPlus = $("#sel-location").addClass("cool").val(" ");
+               // userOrigin = $("#sel-location").val().trim()
+                 $(this).removeClass("warning"); 
+               // })
+        // })
+         })
+     }
+             else {
+                var addPlus = $("#sel-location").addClass("cool");
+                            
+             }
     });
 
     // Table headers on load
